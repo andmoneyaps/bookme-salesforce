@@ -1,0 +1,16 @@
+{
+  "packageDirectories": [
+    {
+      "path": "./scheduler-example",
+      "default": true
+    },
+    {
+      "path": "./present-example",
+      "default": false
+    }
+  ],
+  "name": "andmoney-examples",
+  "namespace": "",
+  "sfdcLoginUrl": "https://test.salesforce.com",
+  "sourceApiVersion": "58.0"
+}
