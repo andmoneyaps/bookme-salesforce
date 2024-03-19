@@ -12,9 +12,6 @@ export default class BookmeFlowCustomerWrapper extends LightningElement {
     @api flexipageRegionWidth; // used to make component width aware, and dependent on were it is inserted, values: SMALL/MEDIUM/LARGE
     @api eventId;
   
-    @api
-    availableActions = [];
-  
     @track
     _config = {};
 
@@ -22,14 +19,21 @@ export default class BookmeFlowCustomerWrapper extends LightningElement {
     user({ error, data }) {
         if(data) {
             this.config = {
-                recordid: this.recordId,
                 accountId: this.recordId,
                 contactId: getFieldValue(data, CONTACT_ID),
                 recordname: this.objectApiName,
                 flexipageRegionWidth: this.flexipageRegionWidth,
-                disableprogressbar: true, 
-                removeclosebutton: true,
-                configid: 'TemplateConfig'
+                // subthemeid: "", // the booking platform subthemeid to preload the flow with for a custom flow
+                // customeremail: "", // initialize the flow with a prefilled customer email
+                // disablecancelmeeting: false, // disable the option for the customer to cancel a meeting in the flow
+                // disablereschedulemeeting: false // disable the option for the customer to reschedule a meeting in the flow
+                // configOverride: { advisorOptionWhitelist: ["PrimaryAdvisor", "OtherAdvisors"], meetingTypeWhitelist: ["Physical", "Online", "Telephone", "OffSite"] }, // Defines an object of whitelisted advisor options and meeting types
+                // removeclosebutton, // removes the close button from the meeting confirmation page
+                // configid: "", // id of the sobject config (custom metadata)
+                // meetingid: "", // id of an existing meeting to preload the meeting flow with (initiates an edit meeting flow)
+                // customflow: "", // name of the custom flow to use ("withtheme", "cancel", "update")
+                // disableprogressbar: false, // remove the progressbar from the flow
+                // disablecustomermeetings: false, // removes the screen that shows upcoming meetings for the customer
             };
         }
         else if(error) {
