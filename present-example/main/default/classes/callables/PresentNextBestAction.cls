@@ -1,16 +1,14 @@
 global without sharing class PresentNextBestAction implements Callable {
-  Map<Id, String> getRecommendations(
-    String customerType,
-    List<String> sections
-  ) {
+  Map<Id, String> getRecommendations(Id recordId, List<String> sections) {
     Map<Id, String> recommendations = new Map<Id, String>();
 
-    for (String section : sections) {
-      recommendations.put(
-        section,
-        'This is a demo implementation - Next best action for ' + customerType
-      );
-    }
+    // Recommend 1 random section a master template
+    Integer randomIndex = Integer.valueof((Math.random() * sections.size()));
+
+    recommendations.put(
+      sections[randomIndex],
+      'Demo: This section is chosen at random' + recordId
+    );
 
     return recommendations;
   }
@@ -19,7 +17,7 @@ global without sharing class PresentNextBestAction implements Callable {
     switch on action {
       when 'getRecommendations' {
         Map<Id, String> result = this.getRecommendations(
-          (String) args.get('customerType'),
+          (Id) args.get('recordId'),
           (List<String>) args.get('sections')
         );
         return result;
