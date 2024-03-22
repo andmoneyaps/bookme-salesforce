@@ -124,6 +124,63 @@ List<Map<String, Object>> configs = new List<Map<String,Object>>{
             }
         }
     }
+
+    // LEAD
+    new Map<String,Object>{
+        'sObject_Type__c' => 'Lead',
+        'With_Sharing__c' => false,
+        'fieldMappings' => new List<Map<String,Object>>{
+            new Map<String, Object>{
+                'Source_Field_Name__c' => 'description',
+                'Target_Field_Name__c' => 'Description',
+                'Util_Class_Name__c' => '',
+                'Util_Method_Name__c' => '',
+                'With_Security__c' => false
+            },
+            new Map<String, Object>{
+                'Source_Field_Name__c' => 'advisor',
+                'Target_Field_Name__c' => 'Email',
+                'Util_Class_Name__c' => 'BookMeConfigCallable',
+                'Util_Method_Name__c' => 'getAdvisorEmail',
+                'With_Security__c' => false
+            },
+            new Map<String, Object>{
+                'Source_Field_Name__c' => 'advisor',
+                'Target_Field_Name__c' => 'FirstName',
+                'Util_Class_Name__c' => 'BookMeConfigCallable',
+                'Util_Method_Name__c' => 'getAdvisorFirstName',
+                'With_Security__c' => false
+            },
+            new Map<String, Object>{
+                'Source_Field_Name__c' => 'advisor',
+                'Target_Field_Name__c' => 'LastName',
+                'Util_Class_Name__c' => 'BookMeConfigCallable',
+                'Util_Method_Name__c' => 'getAdvisorLastName',
+                'With_Security__c' => false
+            },
+            new Map<String, Object>{
+                'Source_Field_Name__c' => 'advisor',
+                'Target_Field_Name__c' => 'OwnerId',
+                'Util_Class_Name__c' => 'BookMeConfigCallable',
+                'Util_Method_Name__c' => 'getAdvisorUserIdFromEmail',
+                'With_Security__c' => false
+            },
+            new Map<String, Object>{
+                'Source_Field_Name__c' => '',
+                'Target_Field_Name__c' => 'Company',
+                'Util_Class_Name__c' => 'BookMeConfigCallable',
+                'Util_Method_Name__c' => 'getCompanyName',
+                'With_Security__c' => false
+            },
+            new Map<String, Object>{
+                'Source_Field_Name__c' => 'accountId',
+                'Target_Field_Name__c' => 'FinServ__RelatedAccount__c',
+                'Util_Class_Name__c' => '',
+                'Util_Method_Name__c' => '',
+                'With_Security__c' => false
+            }
+        }
+    },
 };
 
 
