@@ -1,7 +1,7 @@
 # BookMe Salesforce konfiguration
 
 This repository contains setup for the BookMe Salesforce products.
-There are examples of how to configure the scheduler and present products, with stuv implementations of the various Callable interfaces.
+It contains examples of how to configure the scheduler and present products, with stub implementations of the various Callable interfaces.
 
 When implementing scheduler, create a wrapper component for the `andmoney-bookme-employee-flow` and the `andmoney-bookme-customer-flow` components to configure the flows.
 An example of a wrapper is found in this repo. To configure the flow, pass a config object to the bookme employee or customer flow. 
