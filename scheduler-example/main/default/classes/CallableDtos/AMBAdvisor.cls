@@ -49,7 +49,7 @@ public with sharing class AMBAdvisor implements Callable {
         return this.location;
       }
       when else {
-        throw new AMBNotImplementedException(
+        throw new IllegalArgumentException(
           'Callable method "' + action + '" not implemented'
         );
       }

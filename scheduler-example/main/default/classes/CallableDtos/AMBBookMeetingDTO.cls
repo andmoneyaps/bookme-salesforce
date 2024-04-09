@@ -204,7 +204,7 @@ public class AMBBookMeetingDTO implements Callable {
         return this.endAddress;
       }
       when else {
-        throw new AMBNotImplementedException(
+        throw new IllegalArgumentException(
           'Callable method "' + action + '" not implemented'
         );
       }
