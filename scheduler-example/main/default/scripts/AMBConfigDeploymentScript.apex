@@ -123,7 +123,7 @@ List<Map<String, Object>> configs = new List<Map<String,Object>>{
                 'andmoney__With_Security__c' => false
             }
         }
-    }
+    },
 
     // LEAD
     new Map<String,Object>{
@@ -131,53 +131,53 @@ List<Map<String, Object>> configs = new List<Map<String,Object>>{
         'With_Sharing__c' => false,
         'fieldMappings' => new List<Map<String,Object>>{
             new Map<String, Object>{
-                'Source_Field_Name__c' => 'description',
-                'Target_Field_Name__c' => 'Description',
-                'Util_Class_Name__c' => '',
-                'Util_Method_Name__c' => '',
-                'With_Security__c' => false
+                'andmoney__Source_Field_Name__c' => 'description',
+                'andmoney__Target_Field_Name__c' => 'Description',
+                'andmoney__Util_Class_Name__c' => '',
+                'andmoney__Util_Method_Name__c' => '',
+                'andmoney__With_Security__c' => false
             },
             new Map<String, Object>{
-                'Source_Field_Name__c' => 'advisor',
-                'Target_Field_Name__c' => 'Email',
-                'Util_Class_Name__c' => 'BookMeConfigCallable',
-                'Util_Method_Name__c' => 'getAdvisorEmail',
-                'With_Security__c' => false
+                'andmoney__Source_Field_Name__c' => 'advisor',
+                'andmoney__Target_Field_Name__c' => 'Email',
+                'andmoney__Util_Class_Name__c' => 'BookMeConfigCallable',
+                'andmoney__Util_Method_Name__c' => 'getAdvisorEmail',
+                'andmoney__With_Security__c' => false
             },
             new Map<String, Object>{
-                'Source_Field_Name__c' => 'advisor',
-                'Target_Field_Name__c' => 'FirstName',
-                'Util_Class_Name__c' => 'BookMeConfigCallable',
-                'Util_Method_Name__c' => 'getAdvisorFirstName',
-                'With_Security__c' => false
+                'andmoney__Source_Field_Name__c' => 'advisor',
+                'andmoney__Target_Field_Name__c' => 'FirstName',
+                'andmoney__Util_Class_Name__c' => 'BookMeConfigCallable',
+                'andmoney__Util_Method_Name__c' => 'getAdvisorFirstName',
+                'andmoney__With_Security__c' => false
             },
             new Map<String, Object>{
-                'Source_Field_Name__c' => 'advisor',
-                'Target_Field_Name__c' => 'LastName',
-                'Util_Class_Name__c' => 'BookMeConfigCallable',
-                'Util_Method_Name__c' => 'getAdvisorLastName',
-                'With_Security__c' => false
+                'andmoney__Source_Field_Name__c' => 'advisor',
+                'andmoney__Target_Field_Name__c' => 'LastName',
+                'andmoney__Util_Class_Name__c' => 'BookMeConfigCallable',
+                'andmoney__Util_Method_Name__c' => 'getAdvisorLastName',
+                'andmoney__With_Security__c' => false
             },
             new Map<String, Object>{
-                'Source_Field_Name__c' => 'advisor',
-                'Target_Field_Name__c' => 'OwnerId',
-                'Util_Class_Name__c' => 'BookMeConfigCallable',
-                'Util_Method_Name__c' => 'getAdvisorUserIdFromEmail',
-                'With_Security__c' => false
+                'andmoney__Source_Field_Name__c' => 'advisor',
+                'andmoney__Target_Field_Name__c' => 'OwnerId',
+                'andmoney__Util_Class_Name__c' => 'BookMeConfigCallable',
+                'andmoney__Util_Method_Name__c' => 'getAdvisorUserIdFromEmail',
+                'andmoney__With_Security__c' => false
             },
             new Map<String, Object>{
-                'Source_Field_Name__c' => '',
-                'Target_Field_Name__c' => 'Company',
-                'Util_Class_Name__c' => 'BookMeConfigCallable',
-                'Util_Method_Name__c' => 'getCompanyName',
-                'With_Security__c' => false
+                'andmoney__Source_Field_Name__c' => '',
+                'andmoney__Target_Field_Name__c' => 'Company',
+                'andmoney__Util_Class_Name__c' => 'BookMeConfigCallable',
+                'andmoney__Util_Method_Name__c' => 'getCompanyName',
+                'andmoney__With_Security__c' => false
             },
             new Map<String, Object>{
-                'Source_Field_Name__c' => 'accountId',
-                'Target_Field_Name__c' => 'FinServ__RelatedAccount__c',
-                'Util_Class_Name__c' => '',
-                'Util_Method_Name__c' => '',
-                'With_Security__c' => false
+                'andmoney__Source_Field_Name__c' => 'accountId',
+                'andmoney__Target_Field_Name__c' => 'FinServ__RelatedAccount__c',
+                'andmoney__Util_Class_Name__c' => '',
+                'andmoney__Util_Method_Name__c' => '',
+                'andmoney__With_Security__c' => false
             }
         }
     },
