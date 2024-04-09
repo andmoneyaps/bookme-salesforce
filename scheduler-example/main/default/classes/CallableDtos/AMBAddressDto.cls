@@ -50,7 +50,7 @@ public with sharing class AMBAddressDto implements Callable {
         return this.longitude;
       }
       when else {
-        throw new AuraHandledException('Invalid action');
+        throw new IllegalArgumentException('Invalid action');
       }
     }
   }

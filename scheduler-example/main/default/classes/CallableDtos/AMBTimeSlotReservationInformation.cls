@@ -33,7 +33,7 @@ public with sharing class AMBTimeSlotReservationInformation implements Callable 
         return this.reservedTimeSlotId;
       }
       when else {
-        throw new AMBNotImplementedException(
+        throw new IllegalArgumentException(
           'Callable method "' + action + '" not implemented'
         );
       }
