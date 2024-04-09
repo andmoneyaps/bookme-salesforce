@@ -1,0 +1,8 @@
+public enum AMBOperationType {
+  CREATEOP,
+  READOP,
+  UPDATEOP,
+  DELETEOP,
+  RESCHEDULEOP,
+  CANCELOP
+}
