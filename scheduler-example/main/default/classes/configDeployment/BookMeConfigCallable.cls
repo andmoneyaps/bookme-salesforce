@@ -129,12 +129,11 @@ global without sharing class BookMeConfigCallable implements Callable {
       }
 
       when 'getAdvisorEmail' {
-        AMBBookMeetingDTO dto = (AMBBookMeetingDTO) args.get('dto');
         Callable adv = (Callable) dto.call(
           (String) args.get('sourceName'),
           new Map<String, Object>()
         );
-        String advisorEmail = (String) advisorDto.call(
+        String advisorEmail = (String) adv.call(
           'email',
           new Map<String, Object>()
         );
@@ -142,12 +141,11 @@ global without sharing class BookMeConfigCallable implements Callable {
       }
 
       when 'getAdvisorFirstName' {
-        AMBBookMeetingDTO dto = (AMBBookMeetingDTO) args.get('dto');
         Callable adv = (Callable) dto.call(
           (String) args.get('sourceName'),
           new Map<String, Object>()
         );
-        String name = (String) advisorDto.call(
+        String name = (String) adv.call(
           'name',
           new Map<String, Object>()
         );
@@ -158,13 +156,12 @@ global without sharing class BookMeConfigCallable implements Callable {
       }
 
       when 'getAdvisorLastName' {
-        AMBBookMeetingDTO dto = (AMBBookMeetingDTO) args.get('dto');
         Callable adv = (Callable) dto.call(
           (String) args.get('sourceName'),
           new Map<String, Object>()
         );
 
-        String name = (String) advisorDto.call(
+        String name = (String) adv.call(
           'name',
           new Map<String, Object>()
         );
@@ -179,7 +176,7 @@ global without sharing class BookMeConfigCallable implements Callable {
       }
       
       when else {
-        throw new AMBNotImplementedException(
+        System.debug(
           'Callable method "' + action + '" not implemented'
         );
       }
