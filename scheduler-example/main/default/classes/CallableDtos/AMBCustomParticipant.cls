@@ -50,7 +50,7 @@ public class AMBCustomParticipant implements Callable {
         return this.isSelected;
       }
       when else {
-        throw new AMBNotImplementedException(
+        throw new IllegalArgumentException(
           'Callable method "' + action + '" not implemented'
         );
       }
