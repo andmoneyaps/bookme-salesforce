@@ -1,0 +1,16 @@
+<aura:component implements="force:hasRecordId,flexipage:availableForRecordHome"
+    controller="PresentCustomerTypeController">
+    <!-- Attribute to store recordId -->
+    <aura:attribute name="recordId" type="String" />
+
+    <!-- Attribute to store customerType -->
+    <aura:attribute name="customerType" type="String" />
+
+    <!-- Handler for initialization -->
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+
+    <lightning:card title="Mødepræsentation" iconName="custom:custom62">
+        <!-- Use a child component with attribute bindings -->
+        <c:fastSlides customerTypeInput="{!v.customerType}" recordId="{!v.recordId}" />
+    </lightning:card>
+</aura:component>
