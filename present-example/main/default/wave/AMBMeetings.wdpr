@@ -1,0 +1,508 @@
+{
+  "version" : "60.0",
+  "nodes" : {
+    "LOAD_DATASET3" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "OwnerId", "IsDeleted", "Name", "CreatedDate", "CreatedById", "LastModifiedDate", "LastModifiedById", "SystemModstamp", "andmoney__BookingId__c", "andmoney__Group__c" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "andmoney__AMB_Taxonomy__c",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "andmoney__AMB_Taxonomy__c"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "LOAD_DATASET10" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "WhoId", "WhatId", "WhoCount", "WhatCount", "Subject", "Location", "IsAllDayEvent", "ActivityDateTime", "ActivityDate", "DurationInMinutes", "StartDateTime", "EndDateTime", "EndDate", "Description", "AccountId", "OwnerId", "IsPrivate", "ShowAs", "IsDeleted", "IsChild", "IsGroupEvent", "GroupEventType", "CreatedDate", "CreatedById", "LastModifiedDate", "LastModifiedById", "SystemModstamp", "IsArchived", "RecurrenceActivityId", "IsRecurrence", "RecurrenceStartDateTime", "RecurrenceEndDateOnly", "RecurrenceTimeZoneSidKey", "RecurrenceType", "RecurrenceInterval", "RecurrenceDayOfWeekMask", "RecurrenceDayOfMonth", "RecurrenceInstance", "RecurrenceMonthOfYear", "ReminderDateTime", "IsReminderSet", "EventSubtype", "IsRecurrence2Exclusion", "Recurrence2PatternText", "Recurrence2PatternVersion", "ActivityRecurrence2Id", "ActivityRecurrence2ExceptionId", "IsRecurrence2", "IsRecurrence2Exception", "andmoney__AMB_Event_Detail__c" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "Event",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "Event"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "LOAD_DATASET11" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "Name", "andmoney__AdditionalAdvisorCount__c", "andmoney__AdvisorEmail__c", "andmoney__AdvisorName__c", "andmoney__BookingFlowId__c", "andmoney__CancellationReason__c", "andmoney__CancelledBy__c", "andmoney__Comment__c", "andmoney__IsCustomerInitiated__c", "andmoney__Location__c", "andmoney__MeetingTaxonomy__c", "andmoney__MeetingTypeLabel__c", "andmoney__MeetingType__c", "andmoney__RoomId__c", "andmoney__RoomName__c", "andmoney__SendMeetingInvite__c", "andmoney__TeamsMeetingLink__c" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "andmoney__AMB_Event_Detail__c",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "andmoney__AMB_Event_Detail__c"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "JOIN2" : {
+      "action" : "join",
+      "sources" : [ "FORMULA1", "REPLACE0" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "INNER",
+        "leftKeys" : [ "andmoney__AMB_Event_Detail__c" ],
+        "rightQualifier" : "andmoney__AMB_Event_Detail__c",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "JOIN3" : {
+      "action" : "join",
+      "sources" : [ "JOIN2", "LOAD_DATASET3" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "INNER",
+        "leftKeys" : [ "andmoney__AMB_Event_Detail__c.andmoney__MeetingTaxonomy__c" ],
+        "rightQualifier" : "andmoney__",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "OUTPUT0" : {
+      "action" : "save",
+      "sources" : [ "JOIN7" ],
+      "parameters" : {
+        "fields" : [ ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "AMBMeetings",
+          "name" : "AMBMeetings"
+        },
+        "measuresToCurrencies" : [ ]
+      }
+    },
+    "LOAD_DATASET12" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "Name", "Type", "Description", "andmoney__AMB_Customer_Category__c", "andmoney__AMB_Location__c" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "Account",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "Account"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "LOAD_DATASET13" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "OwnerId", "IsDeleted", "Name", "CreatedDate", "CreatedById", "LastModifiedDate", "LastModifiedById", "SystemModstamp", "andmoney__BookingId__c", "andmoney__Group__c" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "andmoney__AMB_Taxonomy__c",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "andmoney__AMB_Taxonomy__c"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "JOIN4" : {
+      "action" : "join",
+      "sources" : [ "LOAD_DATASET12", "LOAD_DATASET13" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "INNER",
+        "leftKeys" : [ "andmoney__AMB_Customer_Category__c" ],
+        "rightQualifier" : "andmoney__",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "JOIN5" : {
+      "action" : "join",
+      "sources" : [ "JOIN3", "JOIN4" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "INNER",
+        "leftKeys" : [ "AccountId" ],
+        "rightQualifier" : "Accounts",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "LOAD_DATASET14" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "IsDeleted", "Name", "CreatedDate", "CreatedById", "LastModifiedDate", "LastModifiedById", "SystemModstamp", "andmoney__AMB_Event_Detail__c", "andmoney__Contact__c", "andmoney__Email__c" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "andmoney__AMB_Meeting_Contact__c",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "andmoney__AMB_Meeting_Contact__c"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "JOIN6" : {
+      "action" : "join",
+      "sources" : [ "JOIN5", "LOAD_DATASET14" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "INNER",
+        "leftKeys" : [ "andmoney__AMB_Event_Detail__c.Id" ],
+        "rightQualifier" : "andmoney__1",
+        "rightKeys" : [ "andmoney__AMB_Event_Detail__c" ]
+      }
+    },
+    "LOAD_DATASET15" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "IsDeleted", "MasterRecordId", "AccountId", "LastName", "FirstName", "Salutation", "Name", "OtherStreet", "OtherCity", "OtherState", "OtherPostalCode", "OtherCountry", "OtherLatitude", "OtherLongitude", "OtherGeocodeAccuracy", "MailingStreet", "MailingCity", "MailingState", "MailingPostalCode", "MailingCountry", "MailingLatitude", "MailingLongitude", "MailingGeocodeAccuracy", "Phone", "Fax", "MobilePhone", "HomePhone", "OtherPhone", "AssistantPhone", "ReportsToId", "Email", "Title", "Department", "AssistantName", "LeadSource", "Birthdate", "Description", "OwnerId", "CanAllowPortalSelfReg", "CreatedDate", "CreatedById", "LastModifiedDate", "LastModifiedById", "SystemModstamp", "LastActivityDate", "LastCURequestDate", "LastCUUpdateDate", "LastViewedDate", "LastReferencedDate" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "Contact",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "Contact"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "JOIN7" : {
+      "action" : "join",
+      "sources" : [ "JOIN6", "LOAD_DATASET15" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "INNER",
+        "leftKeys" : [ "andmoney__1.andmoney__Contact__c" ],
+        "rightQualifier" : "Contact",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "REPLACE0" : {
+      "action" : "formula",
+      "sources" : [ "LOAD_DATASET11" ],
+      "schema" : {
+        "fields" : [ {
+          "name" : "andmoney__RoomName__c_replace",
+          "newProperties" : {
+            "name" : "andmoney__RoomName__c"
+          }
+        } ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ "andmoney__RoomName__c" ]
+        }
+      },
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "andmoney__RoomName__c_replace",
+          "label" : "RoomName",
+          "formulaExpression" : "coalesce(andmoney__RoomName__c, null, 'Intet lokale')",
+          "precision" : 255
+        } ]
+      }
+    },
+    "FORMULA0" : {
+      "action" : "formula",
+      "sources" : [ "LOAD_DATASET10" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "CreatedDate_formula",
+          "label" : "Created Date Formula",
+          "formulaExpression" : "(to_unix_timestamp(now())-to_unix_timestamp(CreatedDate))/3600\n",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA1" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "HoursSinceLastBooked",
+          "label" : "HoursSinceLastBooked",
+          "formulaExpression" : "case CreatedDate_formula\n\twhen 1\n\tthen concat(CreatedDate_formula, ' time')\n\telse\n\tconcat(CreatedDate_formula, ' timer')\nend",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    }
+  },
+  "ui" : {
+    "nodes" : {
+      "LOAD_DATASET3" : {
+        "label" : "andmoney__AMB_Taxonomy__c",
+        "type" : "LOAD_DATASET",
+        "top" : 532,
+        "left" : 392,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "LOAD_DATASET10" : {
+        "label" : "Event",
+        "type" : "LOAD_DATASET",
+        "top" : 252,
+        "left" : 112,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "LOAD_DATASET11" : {
+        "label" : "andmoney__AMB_Event_Detail__c",
+        "type" : "LOAD_DATASET",
+        "top" : 112,
+        "left" : 112,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN2" : {
+        "label" : "EventsWithDetails",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 112,
+        "left" : 392
+      },
+      "JOIN3" : {
+        "label" : "AMBMeetings",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 112,
+        "left" : 532
+      },
+      "OUTPUT0" : {
+        "label" : "Meetings",
+        "description" : "",
+        "type" : "OUTPUT",
+        "top" : 112,
+        "left" : 1092
+      },
+      "LOAD_DATASET12" : {
+        "label" : "Account",
+        "type" : "LOAD_DATASET",
+        "top" : 252,
+        "left" : 392,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "LOAD_DATASET13" : {
+        "label" : "andmoney__AMB_Taxonomy__c",
+        "type" : "LOAD_DATASET",
+        "top" : 392,
+        "left" : 392,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN4" : {
+        "label" : "Accounts",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 252,
+        "left" : 532
+      },
+      "JOIN5" : {
+        "label" : "MeetingsWithAccount",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 112,
+        "left" : 672
+      },
+      "LOAD_DATASET14" : {
+        "label" : "andmoney__AMB_Meeting_Contact__c",
+        "type" : "LOAD_DATASET",
+        "top" : 252,
+        "left" : 672,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN6" : {
+        "label" : "MeetingsWithParticipants",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 112,
+        "left" : 812
+      },
+      "LOAD_DATASET15" : {
+        "label" : "Contact",
+        "type" : "LOAD_DATASET",
+        "top" : 252,
+        "left" : 812,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN7" : {
+        "label" : "MeetingsWithContacts",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 112,
+        "left" : 952
+      },
+      "TRANSFORM0" : {
+        "label" : "Remove nulls",
+        "description" : "",
+        "type" : "TRANSFORM",
+        "top" : 112,
+        "left" : 252,
+        "graph" : {
+          "REPLACE0" : {
+            "parameters" : {
+              "type" : "REPLACE_UI"
+            },
+            "label" : "Replace"
+          }
+        },
+        "connectors" : [ ]
+      },
+      "TRANSFORM1" : {
+        "label" : "HoursFromLastBooked",
+        "description" : "",
+        "type" : "TRANSFORM",
+        "top" : 252,
+        "left" : 252,
+        "graph" : {
+          "FORMULA0" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA1" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          }
+        },
+        "connectors" : [ {
+          "source" : "FORMULA0",
+          "target" : "FORMULA1"
+        } ]
+      }
+    },
+    "connectors" : [ {
+      "source" : "TRANSFORM1",
+      "target" : "JOIN2"
+    }, {
+      "source" : "JOIN2",
+      "target" : "JOIN3"
+    }, {
+      "source" : "LOAD_DATASET3",
+      "target" : "JOIN3"
+    }, {
+      "source" : "LOAD_DATASET12",
+      "target" : "JOIN4"
+    }, {
+      "source" : "LOAD_DATASET13",
+      "target" : "JOIN4"
+    }, {
+      "source" : "JOIN3",
+      "target" : "JOIN5"
+    }, {
+      "source" : "JOIN4",
+      "target" : "JOIN5"
+    }, {
+      "source" : "JOIN5",
+      "target" : "JOIN6"
+    }, {
+      "source" : "LOAD_DATASET14",
+      "target" : "JOIN6"
+    }, {
+      "source" : "JOIN6",
+      "target" : "JOIN7"
+    }, {
+      "source" : "LOAD_DATASET15",
+      "target" : "JOIN7"
+    }, {
+      "source" : "JOIN7",
+      "target" : "OUTPUT0"
+    }, {
+      "source" : "LOAD_DATASET11",
+      "target" : "TRANSFORM0"
+    }, {
+      "source" : "TRANSFORM0",
+      "target" : "JOIN2"
+    }, {
+      "source" : "LOAD_DATASET10",
+      "target" : "TRANSFORM1"
+    } ],
+    "hiddenColumns" : [ ]
+  },
+  "runMode" : "full"
+}

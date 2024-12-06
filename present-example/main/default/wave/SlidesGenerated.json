@@ -1,0 +1,302 @@
+{
+  "version": "59.0",
+  "nodes": {
+    "LOAD_DATASET0": {
+      "action": "load",
+      "sources": [],
+      "parameters": {
+        "fields": [
+          "Id",
+          "OwnerId",
+          "IsDeleted",
+          "Name",
+          "CreatedDate",
+          "CreatedById",
+          "LastModifiedDate",
+          "LastModifiedById",
+          "SystemModstamp",
+          "andmoney__ExternalId__c",
+          "andmoney__Image_URL__c",
+          "andmoney__Order__c",
+          "andmoney__Subsection_Name__c",
+          "andmoney__Template_Section__c"
+        ],
+        "dataset": {
+          "type": "connectedDataset",
+          "label": "andmoney__Slide__c",
+          "connectionName": "SFDC_LOCAL",
+          "sourceObjectName": "andmoney__Slide__c"
+        },
+        "sampleDetails": {
+          "type": "TopN"
+        }
+      }
+    },
+    "LOAD_DATASET1": {
+      "action": "load",
+      "sources": [],
+      "parameters": {
+        "fields": [
+          "Id",
+          "OwnerId",
+          "IsDeleted",
+          "Name",
+          "CreatedDate",
+          "CreatedById",
+          "LastModifiedDate",
+          "LastModifiedById",
+          "SystemModstamp",
+          "andmoney__Template__c"
+        ],
+        "dataset": {
+          "type": "connectedDataset",
+          "label": "andmoney__Template_Section__c",
+          "connectionName": "SFDC_LOCAL",
+          "sourceObjectName": "andmoney__Template_Section__c"
+        },
+        "sampleDetails": {
+          "type": "TopN"
+        }
+      }
+    },
+    "LOAD_DATASET2": {
+      "action": "load",
+      "sources": [],
+      "parameters": {
+        "fields": [
+          "Id",
+          "OwnerId",
+          "IsDeleted",
+          "Name",
+          "CreatedDate",
+          "CreatedById",
+          "LastModifiedDate",
+          "LastModifiedById",
+          "SystemModstamp",
+          "andmoney__Customer_Type__c"
+        ],
+        "dataset": {
+          "type": "connectedDataset",
+          "label": "andmoney__Template__c",
+          "connectionName": "SFDC_LOCAL",
+          "sourceObjectName": "andmoney__Template__c"
+        },
+        "sampleDetails": {
+          "type": "TopN"
+        }
+      }
+    },
+    "LOAD_DATASET3": {
+      "action": "load",
+      "sources": [],
+      "parameters": {
+        "fields": [
+          "Id",
+          "IsDeleted",
+          "Name",
+          "CreatedDate",
+          "CreatedById",
+          "LastModifiedDate",
+          "LastModifiedById",
+          "SystemModstamp",
+          "andmoney__Generated_Slide_Deck__c",
+          "andmoney__Slide__c",
+          "andmoney__order__c"
+        ],
+        "dataset": {
+          "type": "connectedDataset",
+          "label": "andmoney__Generated_slide__c",
+          "connectionName": "SFDC_LOCAL",
+          "sourceObjectName": "andmoney__Generated_slide__c"
+        },
+        "sampleDetails": {
+          "type": "TopN"
+        }
+      }
+    },
+    "JOIN0": {
+      "action": "join",
+      "sources": [
+        "LOAD_DATASET0",
+        "LOAD_DATASET1"
+      ],
+      "schema": {
+        "slice": {
+          "mode": "DROP",
+          "ignoreMissingFields": true,
+          "fields": []
+        }
+      },
+      "parameters": {
+        "joinType": "LOOKUP",
+        "leftKeys": [
+          "andmoney__Template_Section__c"
+        ],
+        "rightQualifier": "andmoney__",
+        "rightKeys": [
+          "Id"
+        ]
+      }
+    },
+    "JOIN1": {
+      "action": "join",
+      "sources": [
+        "JOIN0",
+        "LOAD_DATASET2"
+      ],
+      "schema": {
+        "slice": {
+          "mode": "DROP",
+          "ignoreMissingFields": true,
+          "fields": []
+        }
+      },
+      "parameters": {
+        "joinType": "LOOKUP",
+        "leftKeys": [
+          "andmoney__.andmoney__Template__c"
+        ],
+        "rightQualifier": "andmoney__1",
+        "rightKeys": [
+          "Id"
+        ]
+      }
+    },
+    "JOIN2": {
+      "action": "join",
+      "sources": [
+        "JOIN1",
+        "LOAD_DATASET3"
+      ],
+      "schema": {
+        "slice": {
+          "mode": "DROP",
+          "ignoreMissingFields": true,
+          "fields": []
+        }
+      },
+      "parameters": {
+        "joinType": "OUTER",
+        "leftKeys": [
+          "Id"
+        ],
+        "rightQualifier": "final",
+        "rightKeys": [
+          "andmoney__Slide__c"
+        ]
+      }
+    },
+    "OUTPUT0": {
+      "action": "save",
+      "sources": [
+        "JOIN2"
+      ],
+      "parameters": {
+        "fields": [],
+        "dataset": {
+          "type": "analyticsDataset",
+          "label": "SlidesGenerated",
+          "name": "SlidesGenerated"
+        }
+      }
+    }
+  },
+  "ui": {
+    "nodes": {
+      "LOAD_DATASET0": {
+        "label": "andmoney__Slide__c",
+        "type": "LOAD_DATASET",
+        "top": 112,
+        "left": 112,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "LOAD_DATASET1": {
+        "label": "andmoney__Template_Section__c",
+        "type": "LOAD_DATASET",
+        "top": 252,
+        "left": 112,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "LOAD_DATASET2": {
+        "label": "andmoney__Template__c",
+        "type": "LOAD_DATASET",
+        "top": 392,
+        "left": 112,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "LOAD_DATASET3": {
+        "label": "andmoney__Generated_slide__c",
+        "type": "LOAD_DATASET",
+        "top": 532,
+        "left": 112,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "JOIN0": {
+        "label": "Join 0",
+        "type": "JOIN",
+        "top": 112,
+        "left": 252
+      },
+      "JOIN1": {
+        "label": "Join 1",
+        "type": "JOIN",
+        "top": 112,
+        "left": 392
+      },
+      "JOIN2": {
+        "label": "SlidesJoin",
+        "description": "",
+        "type": "JOIN",
+        "top": 112,
+        "left": 532
+      },
+      "OUTPUT0": {
+        "label": "SlidesGenerated",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 112,
+        "left": 672
+      }
+    },
+    "connectors": [
+      {
+        "source": "LOAD_DATASET0",
+        "target": "JOIN0"
+      },
+      {
+        "source": "LOAD_DATASET1",
+        "target": "JOIN0"
+      },
+      {
+        "source": "JOIN0",
+        "target": "JOIN1"
+      },
+      {
+        "source": "LOAD_DATASET2",
+        "target": "JOIN1"
+      },
+      {
+        "source": "JOIN1",
+        "target": "JOIN2"
+      },
+      {
+        "source": "LOAD_DATASET3",
+        "target": "JOIN2"
+      },
+      {
+        "source": "JOIN2",
+        "target": "OUTPUT0"
+      }
+    ],
+    "hiddenColumns": []
+  },
+  "runMode": "full"
+}

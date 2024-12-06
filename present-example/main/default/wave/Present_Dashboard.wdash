@@ -1,0 +1,1467 @@
+{
+    "dataSourceLinksInfo": {
+        "enableAutomaticLinking": true,
+        "excludeRelationships": [],
+        "links": []
+    },
+    "filters": [],
+    "gridLayouts": [
+        {
+            "name": "Default",
+            "numColumns": 12,
+            "pages": [
+                {
+                    "label": "Present Dashboard",
+                    "name": "8d64dae5-4575-4142-bf82-bbe8c0717585",
+                    "navigationHidden": false,
+                    "widgets": [
+                        {
+                            "colspan": 3,
+                            "column": 0,
+                            "name": "number_2",
+                            "row": 0,
+                            "rowspan": 6,
+                            "widgetStyle": {
+                                "borderEdges": []
+                            }
+                        },
+                        {
+                            "colspan": 8,
+                            "column": 0,
+                            "name": "chart_1",
+                            "row": 6,
+                            "rowspan": 6,
+                            "widgetStyle": {
+                                "borderEdges": []
+                            }
+                        },
+                        {
+                            "colspan": 5,
+                            "column": 3,
+                            "name": "number_1",
+                            "row": 0,
+                            "rowspan": 6,
+                            "widgetStyle": {
+                                "borderEdges": []
+                            }
+                        },
+                        {
+                            "colspan": 4,
+                            "column": 0,
+                            "name": "table_1",
+                            "row": 12,
+                            "rowspan": 7,
+                            "widgetStyle": {
+                                "borderEdges": []
+                            }
+                        },
+                        {
+                            "colspan": 4,
+                            "column": 8,
+                            "name": "chart_2",
+                            "row": 10,
+                            "rowspan": 9,
+                            "widgetStyle": {
+                                "borderEdges": []
+                            }
+                        },
+                        {
+                            "colspan": 4,
+                            "column": 8,
+                            "name": "chart_3",
+                            "row": 0,
+                            "rowspan": 10,
+                            "widgetStyle": {
+                                "borderEdges": []
+                            }
+                        },
+                        {
+                            "colspan": 4,
+                            "column": 4,
+                            "name": "table_3",
+                            "row": 12,
+                            "rowspan": 7,
+                            "widgetStyle": {
+                                "borderEdges": []
+                            }
+                        }
+                    ]
+                }
+            ],
+            "rowHeight": "normal",
+            "selectors": [],
+            "style": {
+                "alignmentX": "left",
+                "alignmentY": "top",
+                "backgroundColor": "#F2F6FA",
+                "cellSpacingX": 8,
+                "cellSpacingY": 8,
+                "fit": "original",
+                "gutterColor": "#C5D3E0"
+            },
+            "version": 1.0
+        }
+    ],
+    "layouts": [],
+    "steps": {
+        "LeastUsedSlides_1": {
+            "broadcastFacet": true,
+            "groups": [],
+            "label": "LeastUsedSlides",
+            "numbers": [],
+            "query": "q = load \"SlidesGenerated\";\nq = foreach q generate \n    'Id' as 'SlideId',\n    'andmoney__1.Name' as 'Template Navn',\n    'Name' as 'Slide Navn',\n    'andmoney__Subsection_Name__c' as 'Undersektion Navn',\n    'andmoney__.Name' as 'Sektionsnavn',\n    'final.andmoney__Generated_Slide_Deck__c' as 'GeneratedSlideId', \n    count() as 'Antal Slides';\nq = foreach q generate \n    'Template Navn',\n    'Slide Navn',\n    'Undersektion Navn',\n    'Sektionsnavn',\n    case \n        when 'GeneratedSlideId' is null then 0\n        else sum('Antal Slides')\n    end as 'Count';\nq = group q by ('Template Navn', 'Slide Navn', 'Sektionsnavn', 'Undersektion Navn');\nq = foreach q generate \n    'Template Navn',\n    'Slide Navn',\n    'Sektionsnavn',\n    'Undersektion Navn',\n    sum('Count') as 'Antal Slides';\nq = order q by 'Antal Slides' asc;\nq = limit q 10;",
+            "receiveFacetSource": {
+                "mode": "all",
+                "steps": []
+            },
+            "selectMode": "single",
+            "strings": [],
+            "type": "saql",
+            "useGlobal": true,
+            "visualizationParameters": {
+                "parameters": {
+                    "autoFitMode": "keepLabels",
+                    "bins": {
+                        "breakpoints": {
+                            "high": 100,
+                            "low": 0
+                        },
+                        "bands": {
+                            "high": {
+                                "color": "#008000",
+                                "label": ""
+                            },
+                            "low": {
+                                "color": "#B22222",
+                                "label": ""
+                            },
+                            "medium": {
+                                "color": "#ffa500",
+                                "label": ""
+                            }
+                        }
+                    },
+                    "legend": {
+                        "descOrder": false,
+                        "showHeader": true,
+                        "show": true,
+                        "customSize": "auto",
+                        "position": "right-top",
+                        "inside": false
+                    },
+                    "axisMode": "sync",
+                    "tooltip": {
+                        "content": {
+                            "legend": {
+                                "showBinLabel": true,
+                                "measures": [],
+                                "showNullValues": true,
+                                "customizeLegend": false,
+                                "showPercentage": true,
+                                "showDimensions": true,
+                                "showMeasures": true,
+                                "dimensions": []
+                            }
+                        }
+                    },
+                    "visualizationType": "hbar",
+                    "title": {
+                        "fontSize": 14,
+                        "subtitleFontSize": 11,
+                        "label": "",
+                        "align": "center",
+                        "subtitleLabel": ""
+                    },
+                    "binValues": false,
+                    "trellis": {
+                        "flipLabels": false,
+                        "showGridLines": true,
+                        "size": [
+                            100,
+                            100
+                        ],
+                        "enable": false,
+                        "type": "x",
+                        "chartsPerLine": 4
+                    },
+                    "showActionMenu": true,
+                    "measureAxis2": {
+                        "sqrtScale": false,
+                        "showTitle": true,
+                        "showAxis": true,
+                        "title": "",
+                        "customDomain": {
+                            "showDomain": false
+                        }
+                    },
+                    "valueType": "compactNumber",
+                    "measureAxis1": {
+                        "sqrtScale": false,
+                        "showTitle": true,
+                        "showAxis": true,
+                        "title": "",
+                        "customDomain": {
+                            "showDomain": false
+                        }
+                    },
+                    "theme": "wave",
+                    "compactDecimalDigits": -1,
+                    "dimensionAxis": {
+                        "showTitle": true,
+                        "customSize": "auto",
+                        "showAxis": true,
+                        "title": "",
+                        "icons": {
+                            "useIcons": false,
+                            "iconProps": {
+                                "fit": "cover",
+                                "column": "",
+                                "type": "round"
+                            }
+                        }
+                    },
+                    "applyConditionalFormatting": true
+                },
+                "type": "chart"
+            }
+        },
+        "andmoney__PPTX_Conte_1": {
+            "broadcastFacet": true,
+            "datasets": [],
+            "isGlobal": false,
+            "query": {
+                "query": "{\"measures\":[[\"unique\",\"andmoney__PPTX_Content_Version_Id__c\"]],\"filters\":[[\"andmoney__PPTX_Content_Version_Id__c\",[],\"isnotnull\"]]}",
+                "version": -1.0
+            },
+            "receiveFacetSource": {
+                "mode": "all",
+                "steps": []
+            },
+            "selectMode": "single",
+            "sobject": "andmoney__Generated_Slide_Deck__c",
+            "type": "aggregateflex",
+            "useGlobal": true,
+            "visualizationParameters": {
+                "parameters": {
+                    "autoFitMode": "keepLabels",
+                    "bins": {
+                        "breakpoints": {
+                            "high": 100,
+                            "low": 0
+                        },
+                        "bands": {
+                            "high": {
+                                "color": "#008000",
+                                "label": ""
+                            },
+                            "low": {
+                                "color": "#B22222",
+                                "label": ""
+                            },
+                            "medium": {
+                                "color": "#ffa500",
+                                "label": ""
+                            }
+                        }
+                    },
+                    "legend": {
+                        "descOrder": false,
+                        "showHeader": true,
+                        "show": true,
+                        "customSize": "auto",
+                        "position": "right-top",
+                        "inside": false
+                    },
+                    "axisMode": "sync",
+                    "tooltip": {
+                        "content": {
+                            "legend": {
+                                "showBinLabel": true,
+                                "measures": [],
+                                "showNullValues": true,
+                                "customizeLegend": false,
+                                "showPercentage": true,
+                                "showDimensions": true,
+                                "showMeasures": true,
+                                "dimensions": []
+                            }
+                        }
+                    },
+                    "visualizationType": "hbar",
+                    "title": {
+                        "fontSize": 14,
+                        "subtitleFontSize": 11,
+                        "label": "",
+                        "align": "center",
+                        "subtitleLabel": ""
+                    },
+                    "binValues": false,
+                    "trellis": {
+                        "flipLabels": false,
+                        "showGridLines": true,
+                        "size": [
+                            100,
+                            100
+                        ],
+                        "enable": false,
+                        "type": "x",
+                        "chartsPerLine": 4
+                    },
+                    "columnMap": {
+                        "trellis": [],
+                        "dimensionAxis": [],
+                        "plots": [
+                            "unique_andmoney__PPTX_Content_Version_Id__c"
+                        ]
+                    },
+                    "showActionMenu": true,
+                    "measureAxis2": {
+                        "sqrtScale": false,
+                        "showTitle": true,
+                        "showAxis": true,
+                        "title": "",
+                        "customDomain": {
+                            "showDomain": false
+                        }
+                    },
+                    "valueType": "compactNumber",
+                    "measureAxis1": {
+                        "sqrtScale": false,
+                        "showTitle": true,
+                        "showAxis": true,
+                        "title": "",
+                        "customDomain": {
+                            "showDomain": false
+                        }
+                    },
+                    "theme": "wave",
+                    "compactDecimalDigits": -1,
+                    "dimensionAxis": {
+                        "showTitle": true,
+                        "customSize": "auto",
+                        "showAxis": true,
+                        "title": "",
+                        "icons": {
+                            "useIcons": false,
+                            "iconProps": {
+                                "fit": "cover",
+                                "column": "",
+                                "type": "round"
+                            }
+                        }
+                    },
+                    "applyConditionalFormatting": true
+                },
+                "type": "chart"
+            }
+        },
+        "MostUsedSlides_1": {
+            "broadcastFacet": true,
+            "groups": [],
+            "label": "MostUsedSlides",
+            "numbers": [],
+            "query": "q = load \"SlidesGenerated\";\nq = foreach q generate \n    'Id' as 'SlideId',\n    'andmoney__1.Name' as 'Template Navn',\n    'Name' as 'Slide Navn',\n    'andmoney__Subsection_Name__c' as 'Undersektion Navn',\n    'andmoney__.Name' as 'Sektionsnavn',\n    'final.andmoney__Generated_Slide_Deck__c' as 'GeneratedSlideId', \n    count() as 'Antal Slides';\nq = foreach q generate \n    'Template Navn',\n    'Slide Navn',\n    'Undersektion Navn',\n    'Sektionsnavn',\n    case \n        when 'GeneratedSlideId' is null then 0\n        else sum('Antal Slides')\n    end as 'Count';\nq = group q by ('Template Navn', 'Slide Navn', 'Sektionsnavn', 'Undersektion Navn');\nq = foreach q generate \n    'Template Navn',\n    'Slide Navn',\n    'Sektionsnavn',\n    'Undersektion Navn',\n    sum('Count') as 'Antal Slides';\nq = order q by 'Antal Slides' desc;\nq = limit q 10;",
+            "receiveFacetSource": {
+                "mode": "all",
+                "steps": []
+            },
+            "selectMode": "single",
+            "strings": [],
+            "type": "saql",
+            "useGlobal": true,
+            "visualizationParameters": {
+                "parameters": {
+                    "autoFitMode": "keepLabels",
+                    "bins": {
+                        "breakpoints": {
+                            "high": 100,
+                            "low": 0
+                        },
+                        "bands": {
+                            "high": {
+                                "color": "#008000",
+                                "label": ""
+                            },
+                            "low": {
+                                "color": "#B22222",
+                                "label": ""
+                            },
+                            "medium": {
+                                "color": "#ffa500",
+                                "label": ""
+                            }
+                        }
+                    },
+                    "legend": {
+                        "descOrder": false,
+                        "showHeader": true,
+                        "show": true,
+                        "customSize": "auto",
+                        "position": "right-top",
+                        "inside": false
+                    },
+                    "axisMode": "sync",
+                    "tooltip": {
+                        "content": {
+                            "legend": {
+                                "showBinLabel": true,
+                                "measures": [],
+                                "showNullValues": true,
+                                "customizeLegend": false,
+                                "showPercentage": true,
+                                "showDimensions": true,
+                                "showMeasures": true,
+                                "dimensions": []
+                            }
+                        }
+                    },
+                    "visualizationType": "hbar",
+                    "title": {
+                        "fontSize": 14,
+                        "subtitleFontSize": 11,
+                        "label": "",
+                        "align": "center",
+                        "subtitleLabel": ""
+                    },
+                    "binValues": false,
+                    "trellis": {
+                        "flipLabels": false,
+                        "showGridLines": true,
+                        "size": [
+                            100,
+                            100
+                        ],
+                        "enable": false,
+                        "type": "x",
+                        "chartsPerLine": 4
+                    },
+                    "showActionMenu": true,
+                    "measureAxis2": {
+                        "sqrtScale": false,
+                        "showTitle": true,
+                        "showAxis": true,
+                        "title": "",
+                        "customDomain": {
+                            "showDomain": false
+                        }
+                    },
+                    "valueType": "compactNumber",
+                    "measureAxis1": {
+                        "sqrtScale": false,
+                        "showTitle": true,
+                        "showAxis": true,
+                        "title": "",
+                        "customDomain": {
+                            "showDomain": false
+                        }
+                    },
+                    "theme": "wave",
+                    "compactDecimalDigits": -1,
+                    "dimensionAxis": {
+                        "showTitle": true,
+                        "customSize": "auto",
+                        "showAxis": true,
+                        "title": "",
+                        "icons": {
+                            "useIcons": false,
+                            "iconProps": {
+                                "fit": "cover",
+                                "column": "",
+                                "type": "round"
+                            }
+                        }
+                    },
+                    "applyConditionalFormatting": true
+                },
+                "type": "chart"
+            }
+        },
+        "SectionAndSubsection_1": {
+            "broadcastFacet": true,
+            "groups": [],
+            "label": "SectionAndSubsection",
+            "numbers": [],
+            "query": "q = load \"GeneratedSlidesDataset\";\nq = foreach q generate \n    'andmoney__1.Name' as 'Section',\n    'andmoney__.andmoney__Subsection_Name__c' as 'Subsection',  // Use 'NoSubsection' for null Subsection\n    count() as 'CountSlides';\nq = group q by ('Section', 'Subsection');\nq = foreach q generate \n    'Section' + \n    case\n        when ('Subsection' is null) then \"\"\n        else \"--\"\n    end\n    +\n    coalesce('Subsection', \"\") as 'SectionSubsection',\n    sum('CountSlides') as 'Count';\nq = order q by 'Count' desc;  // Sorting by descending count to get the most used first\nq = limit q 10;\n",
+            "receiveFacetSource": {
+                "mode": "all",
+                "steps": []
+            },
+            "selectMode": "single",
+            "strings": [],
+            "type": "saql",
+            "useGlobal": true,
+            "visualizationParameters": {
+                "parameters": {
+                    "autoFitMode": "keepLabels",
+                    "bins": {
+                        "breakpoints": {
+                            "high": 100,
+                            "low": 0
+                        },
+                        "bands": {
+                            "high": {
+                                "color": "#008000",
+                                "label": ""
+                            },
+                            "low": {
+                                "color": "#B22222",
+                                "label": ""
+                            },
+                            "medium": {
+                                "color": "#ffa500",
+                                "label": ""
+                            }
+                        }
+                    },
+                    "legend": {
+                        "descOrder": false,
+                        "showHeader": true,
+                        "show": true,
+                        "customSize": "auto",
+                        "position": "right-top",
+                        "inside": false
+                    },
+                    "axisMode": "sync",
+                    "tooltip": {
+                        "content": {
+                            "legend": {
+                                "showBinLabel": true,
+                                "measures": [],
+                                "showNullValues": true,
+                                "customizeLegend": false,
+                                "showPercentage": true,
+                                "showDimensions": true,
+                                "showMeasures": true,
+                                "dimensions": []
+                            }
+                        }
+                    },
+                    "visualizationType": "hbar",
+                    "title": {
+                        "fontSize": 14,
+                        "subtitleFontSize": 11,
+                        "label": "",
+                        "align": "center",
+                        "subtitleLabel": ""
+                    },
+                    "binValues": false,
+                    "trellis": {
+                        "flipLabels": false,
+                        "showGridLines": true,
+                        "size": [
+                            100,
+                            100
+                        ],
+                        "enable": false,
+                        "type": "x",
+                        "chartsPerLine": 4
+                    },
+                    "showActionMenu": true,
+                    "measureAxis2": {
+                        "sqrtScale": false,
+                        "showTitle": true,
+                        "showAxis": true,
+                        "title": "",
+                        "customDomain": {
+                            "showDomain": false
+                        }
+                    },
+                    "valueType": "compactNumber",
+                    "measureAxis1": {
+                        "sqrtScale": false,
+                        "showTitle": true,
+                        "showAxis": true,
+                        "title": "",
+                        "customDomain": {
+                            "showDomain": false
+                        }
+                    },
+                    "theme": "wave",
+                    "compactDecimalDigits": -1,
+                    "dimensionAxis": {
+                        "showTitle": true,
+                        "customSize": "auto",
+                        "showAxis": true,
+                        "title": "",
+                        "icons": {
+                            "useIcons": false,
+                            "iconProps": {
+                                "fit": "cover",
+                                "column": "",
+                                "type": "round"
+                            }
+                        }
+                    },
+                    "applyConditionalFormatting": true
+                },
+                "type": "chart"
+            }
+        },
+        "lens_5": {
+            "broadcastFacet": true,
+            "groups": [],
+            "label": "SlidesPerCustomerType",
+            "numbers": [],
+            "query": "q = load \"GeneratedSlidesDataset\";\nq = foreach q generate \n    'andmoney__4.Name' as 'CustomerType', \n    'andmoney__1.Name' as 'Section', \n    case \n        when 'andmoney__.andmoney__Subsection_Name__c' is null then 'andmoney__1.Name'\n        else 'andmoney__.andmoney__Subsection_Name__c'\n    end as 'Subsection', \n    count() as 'NumberOfSlides';\nq = order q by 'NumberOfSlides' desc;\n",
+            "receiveFacetSource": {
+                "mode": "all",
+                "steps": []
+            },
+            "selectMode": "single",
+            "strings": [],
+            "type": "saql",
+            "useGlobal": true,
+            "visualizationParameters": {
+                "parameters": {
+                    "autoFitMode": "keepLabels",
+                    "bins": {
+                        "breakpoints": {
+                            "high": 100,
+                            "low": 0
+                        },
+                        "bands": {
+                            "high": {
+                                "color": "#008000",
+                                "label": ""
+                            },
+                            "low": {
+                                "color": "#B22222",
+                                "label": ""
+                            },
+                            "medium": {
+                                "color": "#ffa500",
+                                "label": ""
+                            }
+                        }
+                    },
+                    "legend": {
+                        "descOrder": false,
+                        "showHeader": true,
+                        "show": true,
+                        "customSize": "auto",
+                        "position": "right-top",
+                        "inside": false
+                    },
+                    "axisMode": "sync",
+                    "tooltip": {
+                        "content": {
+                            "legend": {
+                                "showBinLabel": true,
+                                "measures": [],
+                                "showNullValues": true,
+                                "customizeLegend": false,
+                                "showPercentage": true,
+                                "showDimensions": true,
+                                "showMeasures": true,
+                                "dimensions": []
+                            }
+                        }
+                    },
+                    "visualizationType": "hbar",
+                    "title": {
+                        "fontSize": 14,
+                        "subtitleFontSize": 11,
+                        "label": "",
+                        "align": "center",
+                        "subtitleLabel": ""
+                    },
+                    "binValues": false,
+                    "trellis": {
+                        "flipLabels": false,
+                        "showGridLines": true,
+                        "size": [
+                            100,
+                            100
+                        ],
+                        "enable": false,
+                        "type": "x",
+                        "chartsPerLine": 4
+                    },
+                    "showActionMenu": true,
+                    "measureAxis2": {
+                        "sqrtScale": false,
+                        "showTitle": true,
+                        "showAxis": true,
+                        "title": "",
+                        "customDomain": {
+                            "showDomain": false
+                        }
+                    },
+                    "valueType": "compactNumber",
+                    "measureAxis1": {
+                        "sqrtScale": false,
+                        "showTitle": true,
+                        "showAxis": true,
+                        "title": "",
+                        "customDomain": {
+                            "showDomain": false
+                        }
+                    },
+                    "theme": "wave",
+                    "compactDecimalDigits": -1,
+                    "dimensionAxis": {
+                        "showTitle": true,
+                        "customSize": "auto",
+                        "showAxis": true,
+                        "title": "",
+                        "icons": {
+                            "useIcons": false,
+                            "iconProps": {
+                                "fit": "cover",
+                                "column": "",
+                                "type": "round"
+                            }
+                        }
+                    },
+                    "applyConditionalFormatting": true
+                },
+                "type": "chart"
+            }
+        },
+        "lens_3": {
+            "broadcastFacet": true,
+            "groups": [],
+            "numbers": [],
+            "query": "SELECT andmoney__Generated_Slide_Deck__c, COUNT(Id)\nFROM andmoney__Generated_slide__c\nGROUP BY andmoney__Generated_Slide_Deck__c",
+            "receiveFacetSource": {
+                "mode": "all",
+                "steps": []
+            },
+            "selectMode": "none",
+            "strings": [],
+            "type": "soql",
+            "useGlobal": true,
+            "visualizationParameters": {
+                "parameters": {
+                    "borderColor": "#e0e5ee",
+                    "borderWidth": 1,
+                    "cell": {
+                        "backgroundColor": "#ffffff",
+                        "fontColor": "#16325c",
+                        "fontSize": 12,
+                        "textWrap": true
+                    },
+                    "columnProperties": {},
+                    "columns": [],
+                    "customBulkActions": [],
+                    "header": {
+                        "backgroundColor": "#f4f6f9",
+                        "fontColor": "#16325c",
+                        "fontSize": 12,
+                        "textWrap": true
+                    },
+                    "innerMajorBorderColor": "#a8b7c7",
+                    "innerMinorBorderColor": "#e0e5ee",
+                    "interactions": [],
+                    "maxColumnWidth": 300,
+                    "minColumnWidth": 40,
+                    "mode": "variable",
+                    "numberOfLines": 1,
+                    "showActionMenu": true,
+                    "showRowIndexColumn": true,
+                    "totals": true,
+                    "verticalPadding": 8
+                },
+                "type": "table"
+            }
+        },
+        "PresentationsPerBrug_1": {
+            "broadcastFacet": true,
+            "groups": [],
+            "label": "PresentationsPerBruger",
+            "numbers": [],
+            "query": "q = load \"GeneratedSlidesDataset\";\nq = foreach q generate 'Join5.User.Name' as 'OwnerId', 'andmoney__3.Id' as 'SlideDeckId';\nq = group q by ('SlideDeckId', 'OwnerId');\nq = foreach q generate 'OwnerId', 'SlideDeckId';\nq = group q by 'OwnerId';\nq = foreach q generate 'OwnerId', count() as 'SlideDeckCount';\n",
+            "receiveFacetSource": {
+                "mode": "all",
+                "steps": []
+            },
+            "selectMode": "single",
+            "strings": [],
+            "type": "saql",
+            "useGlobal": true,
+            "visualizationParameters": {
+                "parameters": {
+                    "autoFitMode": "keepLabels",
+                    "bins": {
+                        "breakpoints": {
+                            "high": 100,
+                            "low": 0
+                        },
+                        "bands": {
+                            "high": {
+                                "color": "#008000",
+                                "label": ""
+                            },
+                            "low": {
+                                "color": "#B22222",
+                                "label": ""
+                            },
+                            "medium": {
+                                "color": "#ffa500",
+                                "label": ""
+                            }
+                        }
+                    },
+                    "legend": {
+                        "descOrder": false,
+                        "showHeader": true,
+                        "show": true,
+                        "customSize": "auto",
+                        "position": "right-top",
+                        "inside": false
+                    },
+                    "axisMode": "sync",
+                    "tooltip": {
+                        "content": {
+                            "legend": {
+                                "showBinLabel": true,
+                                "measures": [],
+                                "showNullValues": true,
+                                "customizeLegend": false,
+                                "showPercentage": true,
+                                "showDimensions": true,
+                                "showMeasures": true,
+                                "dimensions": []
+                            }
+                        }
+                    },
+                    "visualizationType": "hbar",
+                    "title": {
+                        "fontSize": 14,
+                        "subtitleFontSize": 11,
+                        "label": "",
+                        "align": "center",
+                        "subtitleLabel": ""
+                    },
+                    "binValues": false,
+                    "trellis": {
+                        "flipLabels": false,
+                        "showGridLines": true,
+                        "size": [
+                            100,
+                            100
+                        ],
+                        "enable": false,
+                        "type": "x",
+                        "chartsPerLine": 4
+                    },
+                    "showActionMenu": true,
+                    "measureAxis2": {
+                        "sqrtScale": false,
+                        "showTitle": true,
+                        "showAxis": true,
+                        "title": "",
+                        "customDomain": {
+                            "showDomain": false
+                        }
+                    },
+                    "valueType": "compactNumber",
+                    "measureAxis1": {
+                        "sqrtScale": false,
+                        "showTitle": true,
+                        "showAxis": true,
+                        "title": "",
+                        "customDomain": {
+                            "showDomain": false
+                        }
+                    },
+                    "theme": "wave",
+                    "compactDecimalDigits": -1,
+                    "dimensionAxis": {
+                        "showTitle": true,
+                        "customSize": "auto",
+                        "showAxis": true,
+                        "title": "",
+                        "icons": {
+                            "useIcons": false,
+                            "iconProps": {
+                                "fit": "cover",
+                                "column": "",
+                                "type": "round"
+                            }
+                        }
+                    },
+                    "applyConditionalFormatting": true
+                },
+                "type": "chart"
+            }
+        },
+        "lens_4": {
+            "broadcastFacet": true,
+            "groups": [],
+            "label": "AverageNumberOfSlides",
+            "numbers": [],
+            "query": "q = load \"GeneratedSlidesDataset\";\nq = group q by ('andmoney__3.Id', 'andmoney__2.Id');\nq = foreach q generate 'andmoney__3.Id' as 'SlideDeckId', count() as 'SlideCount';\nq = group q by all;\nq = foreach q generate avg('SlideCount') as 'AverageSlideCount';",
+            "receiveFacetSource": {
+                "mode": "all",
+                "steps": []
+            },
+            "selectMode": "single",
+            "strings": [],
+            "type": "saql",
+            "useGlobal": true,
+            "visualizationParameters": {
+                "parameters": {
+                    "autoFitMode": "keepLabels",
+                    "bins": {
+                        "breakpoints": {
+                            "high": 100,
+                            "low": 0
+                        },
+                        "bands": {
+                            "high": {
+                                "color": "#008000",
+                                "label": ""
+                            },
+                            "low": {
+                                "color": "#B22222",
+                                "label": ""
+                            },
+                            "medium": {
+                                "color": "#ffa500",
+                                "label": ""
+                            }
+                        }
+                    },
+                    "legend": {
+                        "descOrder": false,
+                        "showHeader": true,
+                        "show": true,
+                        "customSize": "auto",
+                        "position": "right-top",
+                        "inside": false
+                    },
+                    "axisMode": "sync",
+                    "tooltip": {
+                        "content": {
+                            "legend": {
+                                "showBinLabel": true,
+                                "measures": [],
+                                "showNullValues": true,
+                                "customizeLegend": false,
+                                "showPercentage": true,
+                                "showDimensions": true,
+                                "showMeasures": true,
+                                "dimensions": []
+                            }
+                        }
+                    },
+                    "visualizationType": "hbar",
+                    "title": {
+                        "fontSize": 14,
+                        "subtitleFontSize": 11,
+                        "label": "",
+                        "align": "center",
+                        "subtitleLabel": ""
+                    },
+                    "binValues": false,
+                    "trellis": {
+                        "flipLabels": false,
+                        "showGridLines": true,
+                        "size": [
+                            100,
+                            100
+                        ],
+                        "enable": false,
+                        "type": "x",
+                        "chartsPerLine": 4
+                    },
+                    "showActionMenu": true,
+                    "measureAxis2": {
+                        "sqrtScale": false,
+                        "showTitle": true,
+                        "showAxis": true,
+                        "title": "",
+                        "customDomain": {
+                            "showDomain": false
+                        }
+                    },
+                    "valueType": "compactNumber",
+                    "measureAxis1": {
+                        "sqrtScale": false,
+                        "showTitle": true,
+                        "showAxis": true,
+                        "title": "",
+                        "customDomain": {
+                            "showDomain": false
+                        }
+                    },
+                    "theme": "wave",
+                    "compactDecimalDigits": -1,
+                    "dimensionAxis": {
+                        "showTitle": true,
+                        "customSize": "auto",
+                        "showAxis": true,
+                        "title": "",
+                        "icons": {
+                            "useIcons": false,
+                            "iconProps": {
+                                "fit": "cover",
+                                "column": "",
+                                "type": "round"
+                            }
+                        }
+                    },
+                    "applyConditionalFormatting": true
+                },
+                "type": "chart"
+            }
+        },
+        "lens_1": {
+            "query": {
+                "mode": "summary",
+                "reportId": "00OQI000001TsfZ2AS"
+            },
+            "type": "directreport"
+        },
+        "lens_2": {
+            "query": {
+                "mode": "aggregate",
+                "reportId": "00OQI000001UkG92AK"
+            },
+            "selectMode": "none",
+            "type": "directreport"
+        }
+    },
+    "widgetStyle": {
+        "backgroundColor": "#FFFFFF",
+        "borderColor": "#747474",
+        "borderEdges": [],
+        "borderRadius": 0,
+        "borderWidth": 1
+    },
+    "widgets": {
+        "table_1": {
+            "parameters": {
+                "borderColor": "#e0e5ee",
+                "borderWidth": 1,
+                "cell": {
+                    "backgroundColor": "#ffffff",
+                    "fontColor": "#16325c",
+                    "fontSize": 12,
+                    "textWrap": true
+                },
+                "columnProperties": {},
+                "columns": [],
+                "customBulkActions": [],
+                "exploreLink": true,
+                "header": {
+                    "backgroundColor": "#f4f6f9",
+                    "fontColor": "#16325c",
+                    "fontSize": 12,
+                    "textWrap": true
+                },
+                "innerMajorBorderColor": "#a8b7c7",
+                "innerMinorBorderColor": "#e0e5ee",
+                "interactions": [],
+                "maxColumnWidth": 300,
+                "minColumnWidth": 40,
+                "mode": "variable",
+                "numberOfLines": 1,
+                "pivoted": false,
+                "showActionMenu": true,
+                "step": "LeastUsedSlides_1",
+                "verticalPadding": 8
+            },
+            "type": "table"
+        },
+        "table_3": {
+            "parameters": {
+                "borderColor": "#e0e5ee",
+                "borderWidth": 1,
+                "cell": {
+                    "backgroundColor": "#ffffff",
+                    "fontColor": "#16325c",
+                    "fontSize": 12,
+                    "textWrap": true
+                },
+                "columnProperties": {},
+                "columns": [],
+                "customBulkActions": [],
+                "exploreLink": true,
+                "header": {
+                    "backgroundColor": "#f4f6f9",
+                    "fontColor": "#16325c",
+                    "fontSize": 12,
+                    "textWrap": true
+                },
+                "innerMajorBorderColor": "#a8b7c7",
+                "innerMinorBorderColor": "#e0e5ee",
+                "interactions": [],
+                "maxColumnWidth": 300,
+                "minColumnWidth": 40,
+                "mode": "variable",
+                "numberOfLines": 1,
+                "pivoted": false,
+                "showActionMenu": true,
+                "step": "MostUsedSlides_1",
+                "verticalPadding": 8
+            },
+            "type": "table"
+        },
+        "number_2": {
+            "parameters": {
+                "compact": false,
+                "exploreLink": true,
+                "interactions": [],
+                "measureField": "unique_andmoney__PPTX_Content_Version_Id__c",
+                "numberColor": "#091A3E",
+                "numberSize": 64,
+                "showActionMenu": true,
+                "step": "andmoney__PPTX_Conte_1",
+                "textAlignment": "left",
+                "title": "Total antal mødepræsentationer",
+                "titleColor": "#091A3E",
+                "titleSize": 16,
+                "tooltip": {
+                    "customizeTooltip": false
+                }
+            },
+            "type": "number"
+        },
+        "number_1": {
+            "parameters": {
+                "compact": false,
+                "exploreLink": true,
+                "interactions": [],
+                "measureField": "AverageSlideCount",
+                "numberColor": "#091A3E",
+                "numberSize": 64,
+                "showActionMenu": true,
+                "step": "lens_4",
+                "textAlignment": "left",
+                "title": "Gennemsnitlig antal slides per præsentation",
+                "titleColor": "#091A3E",
+                "titleSize": 16,
+                "tooltip": {
+                    "customizeTooltip": false
+                }
+            },
+            "type": "number"
+        },
+        "chart_2": {
+            "parameters": {
+                "autoFitMode": "keepLabels",
+                "bins": {
+                    "breakpoints": {
+                        "high": 100,
+                        "low": 0
+                    },
+                    "bands": {
+                        "high": {
+                            "color": "#008000",
+                            "label": ""
+                        },
+                        "low": {
+                            "color": "#B22222",
+                            "label": ""
+                        },
+                        "medium": {
+                            "color": "#ffa500",
+                            "label": ""
+                        }
+                    }
+                },
+                "legend": {
+                    "descOrder": false,
+                    "showHeader": true,
+                    "show": false,
+                    "customSize": "auto",
+                    "position": "right-top",
+                    "inside": false
+                },
+                "axisMode": "sync",
+                "tooltip": {
+                    "content": {
+                        "legend": {
+                            "showBinLabel": true,
+                            "measures": [],
+                            "showNullValues": true,
+                            "customizeLegend": false,
+                            "showPercentage": true,
+                            "showDimensions": true,
+                            "showMeasures": true,
+                            "dimensions": []
+                        }
+                    }
+                },
+                "visualizationType": "hbar",
+                "exploreLink": true,
+                "title": {
+                    "fontSize": 14,
+                    "subtitleFontSize": 11,
+                    "label": "Antal Slides per Sektion og Undersektion",
+                    "align": "center",
+                    "subtitleLabel": ""
+                },
+                "trellis": {
+                    "flipLabels": false,
+                    "showGridLines": true,
+                    "size": [
+                        100,
+                        100
+                    ],
+                    "enable": false,
+                    "type": "x",
+                    "chartsPerLine": 4
+                },
+                "binValues": false,
+                "showActionMenu": true,
+                "measureAxis2": {
+                    "sqrtScale": false,
+                    "showTitle": true,
+                    "showAxis": true,
+                    "title": "",
+                    "customDomain": {
+                        "showDomain": false
+                    }
+                },
+                "valueType": "compactNumber",
+                "measureAxis1": {
+                    "sqrtScale": false,
+                    "showTitle": true,
+                    "showAxis": false,
+                    "title": "Antal slides",
+                    "customDomain": {
+                        "showDomain": false
+                    }
+                },
+                "theme": "wave",
+                "step": "SectionAndSubsection_1",
+                "compactDecimalDigits": -1,
+                "applyConditionalFormatting": true,
+                "dimensionAxis": {
+                    "showTitle": true,
+                    "customSize": "auto",
+                    "showAxis": true,
+                    "title": "Sektion og Undersektion",
+                    "icons": {
+                        "useIcons": false,
+                        "iconProps": {
+                            "fit": "cover",
+                            "column": "",
+                            "type": "round"
+                        }
+                    }
+                }
+            },
+            "type": "chart"
+        },
+        "chart_1": {
+            "parameters": {
+                "autoFitMode": "keepLabels",
+                "bins": {
+                    "breakpoints": {
+                        "high": 100,
+                        "low": 0
+                    },
+                    "bands": {
+                        "high": {
+                            "color": "#008000",
+                            "label": ""
+                        },
+                        "low": {
+                            "color": "#B22222",
+                            "label": ""
+                        },
+                        "medium": {
+                            "color": "#ffa500",
+                            "label": ""
+                        }
+                    }
+                },
+                "legend": {
+                    "descOrder": false,
+                    "showHeader": true,
+                    "show": false,
+                    "customSize": "auto",
+                    "position": "right-top",
+                    "inside": false
+                },
+                "axisMode": "sync",
+                "tooltip": {
+                    "content": {
+                        "legend": {
+                            "showBinLabel": true,
+                            "measures": [],
+                            "showNullValues": true,
+                            "customizeLegend": false,
+                            "showPercentage": true,
+                            "showDimensions": true,
+                            "showMeasures": true,
+                            "dimensions": []
+                        }
+                    }
+                },
+                "visualizationType": "vbar",
+                "exploreLink": true,
+                "title": {
+                    "fontSize": 14,
+                    "subtitleFontSize": 11,
+                    "label": "Antal mødepræsentationer per dag",
+                    "align": "center",
+                    "subtitleLabel": ""
+                },
+                "trellis": {
+                    "flipLabels": false,
+                    "showGridLines": true,
+                    "size": [
+                        100,
+                        100
+                    ],
+                    "enable": false,
+                    "type": "x",
+                    "chartsPerLine": 4
+                },
+                "binValues": false,
+                "showActionMenu": true,
+                "measureAxis2": {
+                    "sqrtScale": false,
+                    "showTitle": true,
+                    "showAxis": true,
+                    "title": "",
+                    "customDomain": {
+                        "showDomain": false
+                    }
+                },
+                "valueType": "compactNumber",
+                "measureAxis1": {
+                    "sqrtScale": false,
+                    "showTitle": true,
+                    "showAxis": false,
+                    "title": "Antal præsentationer",
+                    "customDomain": {
+                        "showDomain": false
+                    }
+                },
+                "theme": "wave",
+                "step": "lens_1",
+                "compactDecimalDigits": -1,
+                "applyConditionalFormatting": true,
+                "dimensionAxis": {
+                    "showTitle": true,
+                    "customSize": "auto",
+                    "showAxis": true,
+                    "title": "Dag",
+                    "icons": {
+                        "useIcons": false,
+                        "iconProps": {
+                            "fit": "cover",
+                            "column": "",
+                            "type": "round"
+                        }
+                    }
+                }
+            },
+            "type": "chart"
+        },
+        "chart_3": {
+            "parameters": {
+                "autoFitMode": "keepLabels",
+                "bins": {
+                    "breakpoints": {
+                        "high": 100,
+                        "low": 0
+                    },
+                    "bands": {
+                        "high": {
+                            "color": "#008000",
+                            "label": ""
+                        },
+                        "low": {
+                            "color": "#B22222",
+                            "label": ""
+                        },
+                        "medium": {
+                            "color": "#ffa500",
+                            "label": ""
+                        }
+                    }
+                },
+                "legend": {
+                    "descOrder": false,
+                    "showHeader": true,
+                    "show": false,
+                    "customSize": "auto",
+                    "position": "right-top",
+                    "inside": false
+                },
+                "axisMode": "sync",
+                "tooltip": {
+                    "content": {
+                        "legend": {
+                            "showBinLabel": true,
+                            "measures": [],
+                            "showNullValues": true,
+                            "customizeLegend": false,
+                            "showPercentage": true,
+                            "showDimensions": true,
+                            "showMeasures": true,
+                            "dimensions": []
+                        }
+                    }
+                },
+                "visualizationType": "hbar",
+                "exploreLink": true,
+                "title": {
+                    "fontSize": 14,
+                    "subtitleFontSize": 11,
+                    "label": "Mødepræsentationer per bruger",
+                    "align": "center",
+                    "subtitleLabel": ""
+                },
+                "trellis": {
+                    "flipLabels": false,
+                    "showGridLines": true,
+                    "size": [
+                        100,
+                        20
+                    ],
+                    "enable": false,
+                    "type": "x",
+                    "chartsPerLine": 4
+                },
+                "binValues": false,
+                "showActionMenu": true,
+                "measureAxis2": {
+                    "sqrtScale": false,
+                    "showTitle": true,
+                    "showAxis": true,
+                    "title": "",
+                    "customDomain": {
+                        "showDomain": false
+                    }
+                },
+                "valueType": "compactNumber",
+                "measureAxis1": {
+                    "sqrtScale": false,
+                    "showTitle": true,
+                    "showAxis": false,
+                    "title": "Antal mødepræsentationer",
+                    "customDomain": {
+                        "showDomain": false
+                    }
+                },
+                "theme": "wave",
+                "step": "PresentationsPerBrug_1",
+                "compactDecimalDigits": -1,
+                "dimensionAxis": {
+                    "showTitle": true,
+                    "customSize": "auto",
+                    "showAxis": true,
+                    "title": "Bruger",
+                    "icons": {
+                        "useIcons": false,
+                        "iconProps": {
+                            "fit": "cover",
+                            "column": "",
+                            "type": "round"
+                        }
+                    }
+                },
+                "applyConditionalFormatting": true
+            },
+            "type": "chart"
+        }
+    }
+}
