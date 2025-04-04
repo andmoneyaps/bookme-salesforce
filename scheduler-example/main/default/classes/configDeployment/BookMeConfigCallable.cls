@@ -179,6 +179,9 @@ global without sharing class BookMeConfigCallable implements Callable {
         System.debug(
           'Callable method "' + action + '" not implemented'
         );
+        throw new UnsupportedOperationException(
+          'Callable method "' + action + '" not implemented'
+        );
       }
     }
   }
